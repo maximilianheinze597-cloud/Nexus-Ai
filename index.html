@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nova</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<aside>
+  <h1>Nova</h1>
+  <nav>
+    <button data-tab="chat" class="on">KI-Chat</button>
+    <button data-tab="agent">Coding-Agent</button>
+    <button data-tab="memory">Gedächtnis</button>
+  </nav>
+  <label class="lbl">Modell<select id="model"></select></label>
+  <button id="new" class="ghost">Neuer Chat</button>
+  <div id="convs"></div>
+</aside>
+<main>
+  <section id="chat" class="tab on">
+    <div id="msgs"><p class="empty">Stelle eine Frage oder hänge PDFs, Quellcode und Bilder an.</p></div>
+    <div id="files"></div>
+    <div class="bar">
+      <label class="clip" title="Datei anhängen">Anhang<input type="file" id="file" multiple hidden></label>
+      <textarea id="inp" rows="2" placeholder="Nachricht schreiben (Enter sendet, Shift+Enter neue Zeile)"></textarea>
+      <button id="send">Senden</button>
+    </div>
+  </section>
+
+  <section id="agent" class="tab">
+    <h2>Coding-Agent</h2>
+    <p class="hint">Liest dein Repository mit Lesezugriff. Änderungen landen nur als Pull Request auf einem eigenen Branch – und erst nach deiner Freigabe.</p>
+    <div class="row"><select id="repo"></select><span id="wmode" class="pill"></span></div>
+    <textarea id="task" rows="4" placeholder="Aufgabe, z. B. „Finde Fehler in der Authentifizierung und schlage einen Fix vor“"></textarea>
+    <button id="run">Agent starten</button>
+    <div id="log"></div>
+    <div id="proposal"></div>
+  </section>
+
+  <section id="memory" class="tab">
+    <h2>Gedächtnis</h2>
+    <p class="hint">Nova nutzt nur, was du hier freigibst. Du kannst Einträge jederzeit löschen.</p>
+    <div class="row"><input id="mem" placeholder="z. B. Projekt Shop nutzt TypeScript und Vitest"><button id="memAdd">Speichern</button></div>
+    <ul id="memList"></ul>
+  </section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
